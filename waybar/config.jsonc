@@ -8,7 +8,7 @@
   "margin-bottom": -5,
   "modules-left":   ["hyprland/workspaces"],
   "modules-center": ["clock"],
-  "modules-right":  ["tray", "disk", "network", "wireplumber", "custom/notification", "custom/power"],
+  "modules-right":  ["tray", "disk", "network", "wireplumber", "custom/notification", "battery", "custom/power"],
   "wlr/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
@@ -75,6 +75,19 @@
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
+  },
+  "battery": {
+    "interval": 1,
+    "format-icons": {
+      "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+      "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+    },
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}% - {time}",
+    "format-time": "{H}h{M}m"
   },
   "custom/power": {
     "format": "⏻",
