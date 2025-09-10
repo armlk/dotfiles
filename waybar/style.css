@@ -50,7 +50,7 @@ tooltip {
   outline: 0;
 }
 
-#custom-language, #custom-updates, #custom-caffeine, #custom-power, #clock, #wireplumber, #network, #workspaces, #tray, #disk, #custom-notification, #battery {
+#custom-language, #custom-updates, #custom-caffeine, #custom-power, #clock, #wireplumber, #network, #workspaces, #tray, #disk, #custom-notification, #battery, #backlight {
   background: #1e1e2e;
   padding: 0px 10px;
   margin: 3px 0px;
@@ -110,6 +110,10 @@ tooltip {
 
 #battery.critical {
   color: #eb3434;
+}
+
+#backlight {
+  color: #f5bf42;
 }
 
 #custom-power{

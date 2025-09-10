@@ -8,7 +8,7 @@
   "margin-bottom": -5,
   "modules-left":   ["hyprland/workspaces"],
   "modules-center": ["clock"],
-  "modules-right":  ["tray", "disk", "network", "wireplumber", "custom/notification", "battery", "custom/power"],
+  "modules-right":  ["tray", "disk", "network", "wireplumber", "custom/notification", "backlight", "battery", "custom/power"],
   "wlr/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
@@ -39,6 +39,7 @@
     "format": "󰋊 {percentage_used}%"
   },
   "network": {
+    "interval": 1,
     "format-wifi": "󰖩 {essid}",
     "format-ethernet": "󰈀 {essid}",
     "format-linked": "{ifname} (No IP) 󰊗",
@@ -77,7 +78,6 @@
     "escape": true
   },
   "battery": {
-    "interval": 1,
     "format-icons": {
       "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
       "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
@@ -86,12 +86,16 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon} {capacity}% - {time}",
+    "format": "{icon} {capacity}% ({time})",
     "format-time": "{H}h{M}m"
   },
   "custom/power": {
     "format": "⏻",
     "on-click": "wlogout"
+  },
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰃞", "󰃝", "󰃟", "󰃠"]
   }
 }
 
