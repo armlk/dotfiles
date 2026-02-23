@@ -1,14 +1,29 @@
 {
   "layer": "top",
-  "position": "top", 
+  "position": "top",
   "height": 33,
   "margin-left": 5,
   "margin-top": 5,
   "margin-right": 5,
   "margin-bottom": -5,
-  "modules-left":   ["hyprland/workspaces"],
-  "modules-center": ["clock"],
-  "modules-right":  ["tray", "disk", "network", "wireplumber", "backlight", "battery", "custom/notification", "custom/power"],
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "clock",
+    "custom/weather"
+  ],
+  "modules-right": [
+    "tray",
+    "disk",
+    "network",
+    "bluetooth",
+    "wireplumber",
+    "backlight",
+    "battery",
+    "custom/notification",
+    "custom/power"
+  ],
   "wlr/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
@@ -32,8 +47,19 @@
     "show-passive-items": true
   },
   "clock": {
-   "format": " {:%I:%M %p   %m/%d}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    "format": " {:%I:%M %p   %m/%d}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "actions": {
+      "on-click": "shift_down",
+      "on-click-right": "shift_up"
+    }
+  },
+  "custom/weather": {
+    "format": "{}°",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "wttrbar --fahrenheit",
+    "return-type": "json"
   },
   "disk": {
     "format": "󰋊 {percentage_used}%"
@@ -45,6 +71,12 @@
     "format-linked": "{ifname} (No IP) 󰊗",
     "format-disconnected": " Disconnected",
     "tooltip-format-wifi": "Signal Strength: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
+  },
+  "bluetooth": {
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "on-click": "bluetoothctl power $(bluetoothctl show | grep -q \"Powered: yes\" && echo off || echo on)",
+    "on-click-right": "bluetoothctl connect CC:F8:26:E6:B9:6A"
   },
   "wireplumber": {
     "format": "{icon} {volume}%",
@@ -58,7 +90,12 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", "󰕾", ""]
+      "default": [
+        "",
+        "",
+        "󰕾",
+        ""
+      ]
     }
   },
   "custom/notification": {
@@ -79,8 +116,32 @@
   },
   "battery": {
     "format-icons": {
-      "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-      "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+      "default": [
+        "󰂎",
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ],
+      "charging": [
+        "󰢟",
+        "󰢜",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰢝",
+        "󰂉",
+        "󰢞",
+        "󰂊",
+        "󰂋",
+        "󰂅"
+      ]
     },
     "states": {
       "warning": 30,
@@ -94,8 +155,7 @@
     "on-click": "wlogout"
   },
   "backlight": {
-    "format": "{icon} {percent}%",
-    "format-icons": ["󰃞", "󰃝", "󰃟", "󰃠"]
+    "format" : "{icon} {percent}%",
+               "format-icons" : [ "󰃞", "󰃝", "󰃟", "󰃠" ]
   }
 }
-
